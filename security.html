@@ -169,17 +169,18 @@
       <h2>Internal security practices</h2>
       <p>Aging Work Items is developed by a small team at Vudia.</p>
       <ul>
-        <li>Multi-factor authentication is enforced on the Atlassian Developer Console account and on the GitHub account (<code class="field">Dbelokon-cpu</code>) that hosts this documentation site.</li>
+        <li>Multi-factor authentication is enforced on the Atlassian Developer Console account and on the GitHub account (<code class="field">Dbelokon-cpu</code>) that hosts both this documentation site and the app's source.</li>
+        <li>Source code is kept in a private GitHub repository — not publicly browsable — with the same MFA-protected account controlling access.</li>
+        <li>Dependabot is enabled on that repository: alerts and automated security fixes for known vulnerabilities, plus a weekly check for routine dependency updates.</li>
         <li>Credentials are kept in a password manager; passwords are not shared or reused across services.</li>
-        <li>Dependencies are kept deliberately minimal — Atlassian's own Forge packages plus React — and reviewed on update rather than pulled in casually.</li>
+        <li>Dependencies are kept deliberately minimal — Atlassian's own Forge packages plus React — the great majority of the tree comes from Atlassian's own SDKs, not third parties this app chose itself.</li>
         <li>Every change runs through an automated test suite before it ships, and is linted before deployment.</li>
       </ul>
-      <div class="note">The app's source is developed locally rather than on a shared code-hosting platform, so it does not currently go through a multi-person pull-request review. This page will be updated if that changes.</div>
     </section>
 
     <section id="vulnerabilities">
       <h2>Vulnerability management</h2>
-      <p>Development follows OWASP Top 10 guidance. Because dependencies are minimal by design, the surface to track is small; updates are reviewed rather than applied automatically.</p>
+      <p>Development follows OWASP Top 10 guidance. Dependabot watches the dependency tree continuously and opens a pull request the moment a known vulnerability is published; because the tree is small by design, each one gets reviewed and merged rather than queued.</p>
       <p>We are evaluating enrolment in the Atlassian Marketplace-managed security bug bounty program (via Bugcrowd). In the meantime, reports are handled directly — see contacts below — and we follow the Marketplace's own SLA: 10 days for Critical severity, 28 days for High severity.</p>
     </section>
 
