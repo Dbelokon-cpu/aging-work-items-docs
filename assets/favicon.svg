@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144" role="img" aria-label="Aging Work Items">
+  <!-- Jira-complementary blue, chiclet-style rounded square per Marketplace icon guidance. -->
+  <rect width="144" height="144" rx="32" fill="#1868DB"/>
+  <!-- Three tracked items, oldest at the bottom, coloured by the same health
+       zones the gadget itself uses: fine, past the warn zone, past the danger
+       zone. Length also grows, so the metaphor reads even in greyscale. -->
+  <rect x="30" y="38" width="44" height="14" rx="7" fill="#57D9A3"/>
+  <rect x="30" y="65" width="64" height="14" rx="7" fill="#FFC400"/>
+  <rect x="30" y="92" width="84" height="14" rx="7" fill="#FF5630"/>
+</svg>
