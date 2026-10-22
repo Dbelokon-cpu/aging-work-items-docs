@@ -1,4 +1,4 @@
-<title>Aging Work Items Documentation</title>
+<title>Stuck Issues Documentation</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-48.png" type="image/png" sizes="48x48">
 <link rel="icon" href="assets/favicon.ico" sizes="32x32">
@@ -116,7 +116,7 @@
         <svg viewBox="0 0 144 144"><rect x="30" y="38" width="44" height="14" rx="7" fill="#57D9A3"/><rect x="30" y="65" width="64" height="14" rx="7" fill="#FFC400"/><rect x="30" y="92" width="84" height="14" rx="7" fill="#FF5630"/></svg>
       </div>
       <div>
-        <div class="brand-name">AGING WORK ITEMS</div>
+        <div class="brand-name">STUCK ISSUES</div>
         <div class="brand-sub">by Vudia</div>
       </div>
     </a>
@@ -136,7 +136,8 @@
       <a href="#scope">Scope</a>
 
       <span class="toc-group-label">How to show it</span>
-      <a href="#display">Breakdown, rows, wallboard</a>
+      <a href="#what-you-see">What you see</a>
+      <a href="#display">Rows and wallboard</a>
       <a href="#trend">Trend</a>
       <a href="#accessibility">Without colour</a>
       <a href="#honesty">Partial pages</a>
@@ -144,6 +145,7 @@
       <span class="toc-group-label">Reference</span>
       <a href="#faq">FAQ</a>
       <a href="#support">Support</a>
+      <a href="/find-stuck-issues-jql">Finding stuck issues with JQL</a>
     </nav>
 
     <div class="meta-card">
@@ -167,7 +169,7 @@
   </aside>
 
   <main>
-    <h1>Aging Work Items</h1>
+    <h1>Stuck Issues</h1>
     <p class="subtitle">A Jira dashboard gadget that finds the work nobody is moving — how long items have been in progress, how long they waited to start, or how long since anyone touched them, with a threshold you set.</p>
     <p class="lede">Jira reports ageing only as an average — its native Average Age Chart draws a line, never a list. The one thing a standup actually needs, <em>which</em> items are stuck, has to be reconstructed by hand. This gadget puts the list on the dashboard instead, sorted oldest first, coloured against a threshold that's either fixed or drawn from your own team's history.</p>
 
@@ -186,14 +188,14 @@
         <div class="measure-card"><h4>Time waiting to start</h4><p>How long has it sat in the backlog, untouched.</p></div>
         <div class="measure-card"><h4>Time since last update</h4><p>What has nobody touched, whatever its status.</p></div>
       </div>
-      <p>Whichever you pick, the answer is a sorted list of the oldest items, four headline figures (how many, how many past the zone, the median, the oldest), a distribution chart, and a breakdown — not a single number buried in an average.</p>
+      <p>Whichever you pick, the answer is a small dashboard rather than a single number buried in an average: four headline figures with their change since last week, every item drawn as a bar against your late and overdue lines, a 90-day trend, and the list of items itself, oldest first — see <a href="#what-you-see">What you see</a> — not a single number buried in an average.</p>
     </section>
 
     <section id="add-to-dashboard">
       <h2>Add to a dashboard</h2>
       <ol class="steps">
         <li>Open a Jira dashboard and choose <strong>Add gadget</strong> (or create a new dashboard first, from <strong>Dashboards → Create dashboard</strong>).</li>
-        <li>Search for <strong>Aging Work Items</strong> in the gadget catalogue and select <strong>Add</strong>.</li>
+        <li>Search for <strong>Stuck Issues</strong> in the gadget catalogue and select <strong>Add</strong>.</li>
         <li>The gadget opens straight into its settings. Pick a measure, narrow the scope if you want to, and choose how it should display — see below for what each setting does.</li>
         <li>Select <strong>Save</strong>. The gadget loads immediately; no further setup is needed.</li>
       </ol>
@@ -248,10 +250,20 @@
       <p>The health-zone baseline is scoped the same way as the gadget itself, with one deliberate exception: it ignores <strong>Active sprint only</strong>, because a single sprint's worth of finished work is a handful of items, not a distribution worth drawing percentiles from.</p>
     </section>
 
+    <section id="what-you-see">
+      <h2>What you see</h2>
+      <h3>Headline figures</h3>
+      <p>Four tiles across the top: how many items match, how many are past the late threshold (and what share of the total that is), the median age, and the oldest item. Each shows its change since the same day last week — <span class="chip chip-danger">▲ +3</span> means three more than a week ago, which for stuck work is the wrong direction — and a bar underneath that puts the figure in context: the split between fresh, late and overdue, or how far the median and the oldest item sit from the overdue line.</p>
+      <p>The weekly change needs a week of history first; until then the tile says <em>no history yet</em>.</p>
+      <h3>Every item, by age</h3>
+      <p>Each item is one bar, oldest on the left, coloured by its zone. Two dashed lines mark where <span class="chip chip-warn">late</span> and <span class="chip chip-danger">overdue</span> start, so you can see at a glance how far past the line the worst items are. Hover a bar for its key, summary, status and assignee; click it to open the issue.</p>
+      <h3>Stuck items</h3>
+      <p>The items themselves, oldest first: key, summary, assignee, status, age, and a zone badge — <span class="chip chip-ok">Fresh</span> <span class="chip chip-warn">Late</span> <span class="chip chip-danger">Overdue</span>. Statuses are coloured by what they mean (in progress, in review, blocked, waiting, to do) so a column of them scans quickly. Sort by key or age from the column headers, click a row to open the issue, or use <strong>Open in Jira</strong> for the same query in the issue navigator.</p>
+      <p>The layout follows the space it has: in a narrow dashboard column the tiles stack and the less important columns step aside, so nothing overlaps. Light and dark both follow Jira's own theme.</p>
+    </section>
+
     <section id="display">
-      <h2>How to show it<span class="h2-note">Settings → How to show it</span></h2>
-      <h3>Break down by</h3>
-      <p>Group the breakdown panel by <strong>Status</strong> (where work is piling up) or by <strong>Assignee</strong> (who's holding the oldest of it) — including an <em>Unassigned</em> group, since work nobody owns is usually the point.</p>
+      <h2>Rows and wallboard<span class="h2-note">Settings → How to show it</span></h2>
       <h3>Row limit</h3>
       <p>Up to 100 rows. Past the limit, the figures the gadget reports stay true — the total, for instance, is never just the row count — only the list and chart show the oldest items rather than all of them. See <a href="#honesty">Partial pages</a> below for exactly what stays exact and what doesn't.</p>
       <h3>Wallboard layout</h3>
@@ -261,12 +273,12 @@
     <section id="trend">
       <h2>Trend</h2>
       <p>Alongside the current snapshot ("Now"), a second tab plots the last 90 days: the total count and how many were past the zone, day by day, plus whether that number is rising or falling recently.</p>
-      <p>History is written once a day, the first time the gadget loads, and only read when you open the Trend tab — an ordinary load never touches it. Changing the measure, board, project, or filter starts a fresh series: the old points would otherwise silently become answers to a different question, drawn on the same line.</p>
+      <p>History is written once a day, the first time the gadget loads. An ordinary load reads back a single point — the one from a week earlier, for the "vs. last week" figures — and the full 90 days are read only when you open the Trend tab. Changing the measure, board, project, or filter starts a fresh series: the old points would otherwise silently become answers to a different question, drawn on the same line.</p>
     </section>
 
     <section id="accessibility">
       <h2>Reading it without colour</h2>
-      <p>Every age is marked as well as coloured: nothing for fine, <span class="chip chip-warn">!</span> for past the warn zone, <span class="chip chip-danger">!!</span> for past the danger zone, with a legend stating exactly where those boundaries fall. Colour is derived from the same mark, so the two can never disagree — and the gadget stays legible in greyscale, to a screen reader, or on a black-and-white printout.</p>
+      <p>Every zone is written as well as coloured: each item carries a <span class="chip chip-ok">Fresh</span>, <span class="chip chip-warn">Late</span> or <span class="chip chip-danger">Overdue</span> badge with an icon, and the threshold lines on the chart are labelled with their day counts. Colour follows the same zone, so the two can never disagree — and the gadget stays legible in greyscale, to a screen reader, or on a black-and-white printout.</p>
     </section>
 
     <section id="honesty">
@@ -278,8 +290,8 @@
           <tr><td class="field">Oldest</td><td>Exact — it's always the first row.</td></tr>
           <tr><td class="field">Total</td><td>Exact — fetched separately whenever the page is a slice.</td></tr>
           <tr><td class="field">Past the zone</td><td>Exact only if the page's youngest row is already under the threshold; shown as e.g. <code class="field">5+</code> otherwise.</td></tr>
-          <tr><td class="field">Median</td><td>Not knowable from a slice — the tile becomes "5 of 18 shown" instead of guessing.</td></tr>
-          <tr><td class="field">Chart &amp; breakdown</td><td>Cover only the rows shown, and say so.</td></tr>
+          <tr><td class="field">Median</td><td>Not knowable from a slice — the tile shows a dash instead of guessing.</td></tr>
+          <tr><td class="field">Chart &amp; list</td><td>Cover only the rows shown, and say so.</td></tr>
         </table>
       </div>
     </section>
@@ -290,11 +302,13 @@
         <dt>Does it change anything in Jira?</dt>
         <dd>No. The app only reads — it has no permission to create, edit, transition, or comment on an issue.</dd>
         <dt>What data does it store?</dt>
-        <dd>One anonymous daily count per gadget, used only for the Trend tab. No names, no issue keys, no account IDs. Full detail in the <a href="/privacy">privacy policy</a>.</dd>
+        <dd>One anonymous daily count per gadget, used for the Trend tab and the "vs. last week" figures. No names, no issue keys, no account IDs. Full detail in the <a href="/privacy">privacy policy</a>.</dd>
         <dt>Why does it say my health zones fell back to a fixed threshold?</dt>
         <dd>Percentile zones need at least ten finished items in the last 180 days in the same scope. Below that, there's no distribution to draw a percentile from, so the gadget uses your fixed threshold instead and says so on screen.</dd>
         <dt>Why is "Time waiting to start" showing items I don't expect?</dt>
         <dd>It includes everything in the To Do category, including work bounced back out of progress — not only freshly filed issues.</dd>
+        <dt>What does "vs. last week" compare against?</dt>
+        <dd>The gadget's own snapshot from seven days earlier (or the nearest day either side). A gadget that is new, or was not opened a week ago, shows <em>no history yet</em> until it has one.</dd>
         <dt>Can I add it more than once?</dt>
         <dd>Yes — each instance keeps its own settings and its own trend history, so you can watch several boards, projects, or measures side by side.</dd>
       </dl>
@@ -305,7 +319,7 @@
       <p>Questions, bug reports, or feature requests: <a href="mailto:info@vudia.site">info@vudia.site</a>.</p>
     </section>
 
-    <div class="colophon">Aging Work Items is built on Atlassian Forge and runs entirely on Atlassian's infrastructure. See the <a href="/privacy">privacy policy</a> for exactly what it reads, writes, and stores.</div>
+    <div class="colophon">Stuck Issues is built on Atlassian Forge and runs entirely on Atlassian's infrastructure. See the <a href="/privacy">privacy policy</a> for exactly what it reads, writes, and stores.</div>
   </main>
 </div>
 

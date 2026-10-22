@@ -1,9 +1,10 @@
-# Aging Work Items — Privacy Policy
+# Stuck Issues — documentation site
 
-Hosted privacy policy for the [Aging Work Items](https://marketplace.atlassian.com/) Jira app by Vudia.
+Public docs for the [Stuck Issues](https://marketplace.atlassian.com/apps/3362333248) Jira app by Vudia
+(formerly "Aging Work Items"), served by GitHub Pages at https://aging.vudia.site.
 
-Live at:
-- https://dbelokon-cpu.github.io/aging-work-items-docs/
-- https://dbelokon-cpu.github.io/aging-work-items-docs/privacy.html
+- `index.html` — user guide
+- `find-stuck-issues-jql.html` — article: finding stuck issues with plain JQL
+- `privacy.html`, `security.html` — policies linked from the Marketplace listing
 
-This is a static page with no build step — `index.html` and `privacy.html` are identical copies of the same document. Served via GitHub Pages.
+Static HTML, no build step. Pages serve them without the extension (`/privacy`, `/security`, `/find-stuck-issues-jql`).
