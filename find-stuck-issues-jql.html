@@ -1,4 +1,4 @@
-<title>Finding stuck issues in Jira with JQL — Stuck Issues</title>
+<title>Finding stuck issues in Jira with JQL — Time in Status</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-48.png" type="image/png" sizes="48x48">
 <link rel="icon" href="assets/favicon.ico" sizes="32x32">
@@ -105,7 +105,7 @@
     background:var(--accent);
     display:flex; align-items:center; justify-content:center;
   }
-  .brand-mark svg{ width:16px; height:16px; }
+  .brand-mark svg{ width:30px; height:30px; }
   .brand-name{
     font-family:"IBM Plex Mono",ui-monospace,monospace;
     font-size:12.5px; font-weight:600; letter-spacing:.02em;
@@ -212,10 +212,10 @@
   <aside>
     <a class="brand" href="/" style="text-decoration:none">
       <div class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 144 144"><rect x="30" y="38" width="44" height="14" rx="7" fill="#57D9A3"/><rect x="30" y="65" width="64" height="14" rx="7" fill="#FFC400"/><rect x="30" y="92" width="84" height="14" rx="7" fill="#FF5630"/></svg>
+        <svg viewBox="0 0 144 144"><rect width="144" height="144" rx="32" fill="#1868DB"/><rect x="62" y="16" width="20" height="10" rx="4" fill="#FFFFFF"/><rect x="68" y="24" width="8" height="12" fill="#FFFFFF"/><rect x="103" y="36" width="10" height="16" rx="4" fill="#FFFFFF" transform="rotate(45 108 44)"/><circle cx="72" cy="82" r="44" fill="#FFFFFF"/><circle cx="72" cy="82" r="35" fill="#0B3D91"/><path d="M72 82 L72 52 A30 30 0 0 1 97.98 97 Z" fill="#57D9A3"/><path d="M72 82 L97.98 97 A30 30 0 0 1 57 107.98 Z" fill="#FFC400"/><path d="M72 82 L57 107.98 A30 30 0 0 1 42.46 76.79 Z" fill="#FF5630"/><circle cx="72" cy="82" r="6" fill="#FFFFFF"/></svg>
       </div>
       <div>
-        <div class="brand-name">STUCK ISSUES</div>
+        <div class="brand-name">TIME IN STATUS</div>
         <div class="brand-sub">by Vudia</div>
       </div>
     </a>
@@ -233,7 +233,7 @@
     <div class="meta-card">
       <div class="meta-row">
         <span class="meta-label">App</span>
-        <span class="meta-value">Stuck Issues</span>
+        <span class="meta-value">Time in Status</span>
       </div>
       <div class="meta-row">
         <span class="meta-label">Documentation</span>
@@ -292,10 +292,10 @@
         <li><strong>One cut-off.</strong> A single <code class="field">-14d</code> says nothing about which items are only just late and which are far past it.</li>
         <li><strong>No direction.</strong> Nothing tells you whether the pile is growing or shrinking week to week.</li>
       </ul>
-      <p><a href="/">Stuck Issues</a> is the gadget we built for that: ages in working days, late and overdue zones that can come from your own team's pace, the change since last week on every figure, and a 90-day trend. It is on the <a href="https://marketplace.atlassian.com/apps/3362333248?hosting=cloud&amp;tab=overview">Atlassian Marketplace</a>.</p>
+      <p><a href="/">Time in Status</a> is the gadget we built for that: ages in working days, late and overdue zones that can come from your own team's pace, the change since last week on every figure, a 90-day trend and a CSV export — plus a panel on each issue showing how long it spent in every status, which JQL cannot tell you at all. It is on the <a href="https://marketplace.atlassian.com/apps/3362333248?hosting=cloud&amp;tab=overview">Atlassian Marketplace</a>.</p>
     </section>
 
-    <div class="colophon">Stuck Issues is made by Vudia. Questions about these queries: <a href="mailto:info@vudia.site">info@vudia.site</a>.</div>
+    <div class="colophon">Time in Status is made by Vudia. Questions about these queries: <a href="mailto:info@vudia.site">info@vudia.site</a>.</div>
 </main>
 </div>
 

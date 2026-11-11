@@ -1,4 +1,4 @@
-<title>Stuck Issues Documentation</title>
+<title>Time in Status Documentation</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-48.png" type="image/png" sizes="48x48">
 <link rel="icon" href="assets/favicon.ico" sizes="32x32">
@@ -44,7 +44,7 @@
   aside{ position:sticky; top:28px; display:flex; flex-direction:column; gap:22px; }
   .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
   .brand-mark{ width:30px; height:30px; border-radius:8px; flex:none; background:var(--accent); display:flex; align-items:center; justify-content:center; }
-  .brand-mark svg{ width:16px; height:16px; }
+  .brand-mark svg{ width:30px; height:30px; }
   .brand-name{ font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12.5px; font-weight:600; letter-spacing:.02em; color:var(--ink); }
   .brand-sub{ font-size:11px; color:var(--faint); margin-top:1px; }
 
@@ -113,10 +113,10 @@
   <aside>
     <a class="brand" href="/">
       <div class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 144 144"><rect x="30" y="38" width="44" height="14" rx="7" fill="#57D9A3"/><rect x="30" y="65" width="64" height="14" rx="7" fill="#FFC400"/><rect x="30" y="92" width="84" height="14" rx="7" fill="#FF5630"/></svg>
+        <svg viewBox="0 0 144 144"><rect width="144" height="144" rx="32" fill="#1868DB"/><rect x="62" y="16" width="20" height="10" rx="4" fill="#FFFFFF"/><rect x="68" y="24" width="8" height="12" fill="#FFFFFF"/><rect x="103" y="36" width="10" height="16" rx="4" fill="#FFFFFF" transform="rotate(45 108 44)"/><circle cx="72" cy="82" r="44" fill="#FFFFFF"/><circle cx="72" cy="82" r="35" fill="#0B3D91"/><path d="M72 82 L72 52 A30 30 0 0 1 97.98 97 Z" fill="#57D9A3"/><path d="M72 82 L97.98 97 A30 30 0 0 1 57 107.98 Z" fill="#FFC400"/><path d="M72 82 L57 107.98 A30 30 0 0 1 42.46 76.79 Z" fill="#FF5630"/><circle cx="72" cy="82" r="6" fill="#FFFFFF"/></svg>
       </div>
       <div>
-        <div class="brand-name">STUCK ISSUES</div>
+        <div class="brand-name">TIME IN STATUS</div>
         <div class="brand-sub">by Vudia</div>
       </div>
     </a>
@@ -139,8 +139,12 @@
       <a href="#what-you-see">What you see</a>
       <a href="#display">Rows and wallboard</a>
       <a href="#trend">Trend</a>
+      <a href="#export">Export to CSV</a>
       <a href="#accessibility">Without colour</a>
       <a href="#honesty">Partial pages</a>
+
+      <span class="toc-group-label">On the issue</span>
+      <a href="#issue-panel">Time in each status</a>
 
       <span class="toc-group-label">Reference</span>
       <a href="#faq">FAQ</a>
@@ -169,8 +173,8 @@
   </aside>
 
   <main>
-    <h1>Stuck Issues</h1>
-    <p class="subtitle">A Jira dashboard gadget that finds the work nobody is moving — how long items have been in progress, how long they waited to start, or how long since anyone touched them, with a threshold you set.</p>
+    <h1>Time in Status</h1>
+    <p class="subtitle">A Jira dashboard gadget that finds the work nobody is moving — how long items have been in progress, how long they waited to start, or how long since anyone touched them, with a threshold you set — plus a panel on every issue showing how long it spent in each status.</p>
     <p class="lede">Jira reports ageing only as an average — its native Average Age Chart draws a line, never a list. The one thing a standup actually needs, <em>which</em> items are stuck, has to be reconstructed by hand. This gadget puts the list on the dashboard instead, sorted oldest first, coloured against a threshold that's either fixed or drawn from your own team's history.</p>
 
     <div class="cta-row">
@@ -188,14 +192,14 @@
         <div class="measure-card"><h4>Time waiting to start</h4><p>How long has it sat in the backlog, untouched.</p></div>
         <div class="measure-card"><h4>Time since last update</h4><p>What has nobody touched, whatever its status.</p></div>
       </div>
-      <p>Whichever you pick, the answer is a small dashboard rather than a single number buried in an average: four headline figures with their change since last week, every item drawn as a bar against your late and overdue lines, a 90-day trend, and the list of items itself, oldest first — see <a href="#what-you-see">What you see</a> — not a single number buried in an average.</p>
+      <p>Whichever you pick, the answer is a small dashboard rather than a single number buried in an average: four headline figures with their change since last week, every item drawn as a bar against your late and overdue lines, a 90-day trend, and the list of items itself, oldest first — see <a href="#what-you-see">What you see</a>.</p>
     </section>
 
     <section id="add-to-dashboard">
       <h2>Add to a dashboard</h2>
       <ol class="steps">
         <li>Open a Jira dashboard and choose <strong>Add gadget</strong> (or create a new dashboard first, from <strong>Dashboards → Create dashboard</strong>).</li>
-        <li>Search for <strong>Stuck Issues</strong> in the gadget catalogue and select <strong>Add</strong>.</li>
+        <li>Search for <strong>Time in Status</strong> in the gadget catalogue (the gadget is called <strong>Time in Status &amp; Aging</strong>) and select <strong>Add</strong>.</li>
         <li>The gadget opens straight into its settings. Pick a measure, narrow the scope if you want to, and choose how it should display — see below for what each setting does.</li>
         <li>Select <strong>Save</strong>. The gadget loads immediately; no further setup is needed.</li>
       </ol>
@@ -211,7 +215,7 @@
       <h3>Time since last update</h3>
       <p>The widest net. Scoped to <code class="field">statusCategory != Done</code>, dated from the ordinary "last updated" field. Answers what nobody has touched, whatever column it's sitting in.</p>
       <p>The three disagree often, and the disagreement is the point. An item started forty days ago but commented on yesterday is ageing, not stale. One started on Tuesday and left alone since is stale, not ageing. One that never started is neither — and is often the worst of the three.</p>
-      <p>None of the three ever reads an issue's changelog — every date used is an ordinary field on the issue, so a load stays a single, bounded search.</p>
+      <p>None of the three ever reads an issue's changelog — every date used is an ordinary field on the issue, so a load stays a single, bounded search. The full status-by-status history of one issue is in the <a href="#issue-panel">issue panel</a> instead.</p>
     </section>
 
     <section id="waiting-vs-working">
@@ -243,6 +247,7 @@
           <tr><td class="field">Board</td><td>Scopes to a specific board's own filter. Leave on <em>All boards</em> to look everywhere you have access.</td></tr>
           <tr><td class="field">Project key</td><td>Narrows to one project. Combines with a board rather than overriding it.</td></tr>
           <tr><td class="field">Epic or parent</td><td>Only work filed under a specific parent issue.</td></tr>
+          <tr><td class="field">Release</td><td>Only work in one fix version, entered by name — for example <code class="field">2.4.0</code>. If several projects use the same release name, add a project key as well to keep to one of them.</td></tr>
           <tr><td class="field">Active sprint only</td><td>Only issues in the sprint currently running. Shows nothing where the scope has no sprint at all — a Kanban board, for instance.</td></tr>
           <tr><td class="field">Extra JQL filter</td><td>Any additional JQL, ANDed onto everything above — for anything the other fields don't cover.</td></tr>
         </table>
@@ -258,7 +263,7 @@
       <h3>Every item, by age</h3>
       <p>Each item is one bar, oldest on the left, coloured by its zone. Two dashed lines mark where <span class="chip chip-warn">late</span> and <span class="chip chip-danger">overdue</span> start, so you can see at a glance how far past the line the worst items are. Hover a bar for its key, summary, status and assignee; click it to open the issue.</p>
       <h3>Stuck items</h3>
-      <p>The items themselves, oldest first: key, summary, assignee, status, age, and a zone badge — <span class="chip chip-ok">Fresh</span> <span class="chip chip-warn">Late</span> <span class="chip chip-danger">Overdue</span>. Statuses are coloured by what they mean (in progress, in review, blocked, waiting, to do) so a column of them scans quickly. Sort by key or age from the column headers, click a row to open the issue, or use <strong>Open in Jira</strong> for the same query in the issue navigator.</p>
+      <p>The items themselves, oldest first: key, summary, assignee, status, age, and a zone badge — <span class="chip chip-ok">Fresh</span> <span class="chip chip-warn">Late</span> <span class="chip chip-danger">Overdue</span>. Statuses are coloured by what they mean (in progress, in review, blocked, waiting, to do) so a column of them scans quickly. Sort by key or age from the column headers, click a row to open the issue, or use <strong>Open in Jira</strong> for the same query in the issue navigator. <strong>CSV</strong> downloads the list as a spreadsheet — see <a href="#export">Export to CSV</a>.</p>
       <p>The layout follows the space it has: in a narrow dashboard column the tiles stack and the less important columns step aside, so nothing overlaps. Light and dark both follow Jira's own theme.</p>
     </section>
 
@@ -273,7 +278,13 @@
     <section id="trend">
       <h2>Trend</h2>
       <p>Alongside the current snapshot ("Now"), a second tab plots the last 90 days: the total count and how many were past the zone, day by day, plus whether that number is rising or falling recently.</p>
-      <p>History is written once a day, the first time the gadget loads. An ordinary load reads back a single point — the one from a week earlier, for the "vs. last week" figures — and the full 90 days are read only when you open the Trend tab. Changing the measure, board, project, or filter starts a fresh series: the old points would otherwise silently become answers to a different question, drawn on the same line.</p>
+      <p>History is written once a day, the first time the gadget loads. An ordinary load reads back a single point — the one from a week earlier, for the "vs. last week" figures — and the full 90 days are read only when you open the Trend tab. Changing the measure, board, project, release, or filter starts a fresh series: the old points would otherwise silently become answers to a different question, drawn on the same line.</p>
+    </section>
+
+    <section id="export">
+      <h2>Export to CSV<span class="h2-note">Stuck items → CSV</span></h2>
+      <p>The <strong>CSV</strong> button above the list downloads every loaded item — all rows up to the row limit, not only the ten on screen — in the order the table is sorted. Each row has the key, summary, status, assignee, priority, issue type, age and zone; for <strong>Time in progress</strong> it also has how long the item waited before work started. The age column says whether it is counted in working or calendar days.</p>
+      <p>The file opens directly in Excel, Numbers or Google Sheets, with names in any language intact. The file is built in your browser; nothing is sent anywhere.</p>
     </section>
 
     <section id="accessibility">
@@ -296,6 +307,19 @@
       </div>
     </section>
 
+    <section id="issue-panel">
+      <h2>Time in each status<span class="h2-note">Issue view → Time in Status</span></h2>
+      <p>Every issue gets a <strong>Time in Status</strong> panel in the right-hand column of the issue view, next to Details. Expand it to see:</p>
+      <ul>
+        <li>how long the issue has been in its current status, and how long since it was created;</li>
+        <li>one row per status it has been in, with the time spent there and its share of the issue's life — the current status is outlined;</li>
+        <li><code class="field">×2</code>, <code class="field">×3</code> next to a status the issue entered more than once — the time is added up across visits;</li>
+        <li>how many times the status changed, and how many of those went back to an earlier status, such as review sent back to development.</li>
+      </ul>
+      <p>Times are in calendar time, down to hours and minutes for short stays. A status renamed since keeps all its time under its current name.</p>
+      <p>Unlike the gadget, the panel reads the issue's change history — only for the one issue you are looking at, only when you open the panel, and as you, so it never shows anything you couldn't already see in the issue's History tab. On an issue with a very long history — over 2,000 changes — the panel reads the most recent 2,000, counts time from the first of them, and says from which date.</p>
+    </section>
+
     <section id="faq">
       <h2>FAQ</h2>
       <dl class="faq">
@@ -309,6 +333,10 @@
         <dd>It includes everything in the To Do category, including work bounced back out of progress — not only freshly filed issues.</dd>
         <dt>What does "vs. last week" compare against?</dt>
         <dd>The gadget's own snapshot from seven days earlier (or the nearest day either side). A gadget that is new, or was not opened a week ago, shows <em>no history yet</em> until it has one.</dd>
+        <dt>Can I export the list?</dt>
+        <dd>Yes — the <strong>CSV</strong> button above the list downloads every loaded row. See <a href="#export">Export to CSV</a>.</dd>
+        <dt>Where do I see how long one issue spent in each status?</dt>
+        <dd>In the <strong>Time in Status</strong> panel on the issue itself. See <a href="#issue-panel">Time in each status</a>.</dd>
         <dt>Can I add it more than once?</dt>
         <dd>Yes — each instance keeps its own settings and its own trend history, so you can watch several boards, projects, or measures side by side.</dd>
       </dl>
@@ -319,7 +347,7 @@
       <p>Questions, bug reports, or feature requests: <a href="mailto:info@vudia.site">info@vudia.site</a>.</p>
     </section>
 
-    <div class="colophon">Stuck Issues is built on Atlassian Forge and runs entirely on Atlassian's infrastructure. See the <a href="/privacy">privacy policy</a> for exactly what it reads, writes, and stores.</div>
+    <div class="colophon">Time in Status is built on Atlassian Forge and runs entirely on Atlassian's infrastructure. See the <a href="/privacy">privacy policy</a> for exactly what it reads, writes, and stores.</div>
   </main>
 </div>
 

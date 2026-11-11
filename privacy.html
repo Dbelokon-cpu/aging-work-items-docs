@@ -1,4 +1,4 @@
-<title>Stuck Issues Privacy Policy</title>
+<title>Time in Status Privacy Policy</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-48.png" type="image/png" sizes="48x48">
 <link rel="icon" href="assets/favicon.ico" sizes="32x32">
@@ -105,7 +105,7 @@
     background:var(--accent);
     display:flex; align-items:center; justify-content:center;
   }
-  .brand-mark svg{ width:16px; height:16px; }
+  .brand-mark svg{ width:30px; height:30px; }
   .brand-name{
     font-family:"IBM Plex Mono",ui-monospace,monospace;
     font-size:12.5px; font-weight:600; letter-spacing:.02em;
@@ -212,10 +212,10 @@
   <aside>
     <a class="brand" href="/" style="text-decoration:none">
       <div class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 144 144"><rect x="30" y="38" width="44" height="14" rx="7" fill="#57D9A3"/><rect x="30" y="65" width="64" height="14" rx="7" fill="#FFC400"/><rect x="30" y="92" width="84" height="14" rx="7" fill="#FF5630"/></svg>
+        <svg viewBox="0 0 144 144"><rect width="144" height="144" rx="32" fill="#1868DB"/><rect x="62" y="16" width="20" height="10" rx="4" fill="#FFFFFF"/><rect x="68" y="24" width="8" height="12" fill="#FFFFFF"/><rect x="103" y="36" width="10" height="16" rx="4" fill="#FFFFFF" transform="rotate(45 108 44)"/><circle cx="72" cy="82" r="44" fill="#FFFFFF"/><circle cx="72" cy="82" r="35" fill="#0B3D91"/><path d="M72 82 L72 52 A30 30 0 0 1 97.98 97 Z" fill="#57D9A3"/><path d="M72 82 L97.98 97 A30 30 0 0 1 57 107.98 Z" fill="#FFC400"/><path d="M72 82 L57 107.98 A30 30 0 0 1 42.46 76.79 Z" fill="#FF5630"/><circle cx="72" cy="82" r="6" fill="#FFFFFF"/></svg>
       </div>
       <div>
-        <div class="brand-name">STUCK ISSUES</div>
+        <div class="brand-name">TIME IN STATUS</div>
         <div class="brand-sub">by Vudia</div>
       </div>
     </a>
@@ -237,7 +237,7 @@
     <div class="meta-card">
       <div class="meta-row">
         <span class="meta-label">App</span>
-        <span class="meta-value">Stuck Issues</span>
+        <span class="meta-value">Time in Status</span>
       </div>
       <div class="meta-row">
         <span class="meta-label">Vendor</span>
@@ -256,12 +256,12 @@
 
   <main>
 
-    <h1>Privacy Policy — Stuck Issues</h1>
+    <h1>Privacy Policy — Time in Status</h1>
     <p class="subtitle">A Jira dashboard gadget by Vudia. This page explains exactly what the app reads from Jira, what it stores, and what it never touches.</p>
 
     <section id="summary">
       <h2>Summary</h2>
-      <p>Stuck Issues is built on Atlassian Forge and runs entirely on Atlassian's infrastructure — it has no servers of its own and makes no outbound network call to anything outside Atlassian. The app only <em>reads</em> from Jira; it never writes anything back. The one thing it stores is a small, anonymous daily count, used to draw its own trend chart.</p>
+      <p>Time in Status is a Jira dashboard gadget plus a panel on the issue view. It is built on Atlassian Forge and runs entirely on Atlassian's infrastructure — it has no servers of its own and makes no outbound network call to anything outside Atlassian. The app only <em>reads</em> from Jira; it never writes anything back. The one thing it stores is a small, anonymous daily count, used to draw its own trend chart.</p>
     </section>
 
     <section id="reads">
@@ -273,6 +273,7 @@
         <li>The list of boards on the site, and which issues belong to a board</li>
         <li>For teams using percentile-based thresholds: the created and resolved dates of recently finished issues, used only to compute a statistic</li>
       </ul>
+      <p>When you open the <strong>Time in Status</strong> panel on an issue, it reads that one issue's change history — the same entries as its History tab — to work out how long it spent in each status. Only the status changes are used; nothing from the history is stored.</p>
       <p>All of it is shown back to you in the gadget, the same way as if you'd run the equivalent search yourself. None of it is copied anywhere else.</p>
     </section>
 
@@ -295,6 +296,7 @@
         <span class="not-pill">passwords</span>
         <span class="not-pill">payment details</span>
       </div>
+      <p>The issue panel stores nothing at all. A CSV export is built in your browser and saved to your own computer; it never passes through the app's storage or any server.</p>
       <p>The gadget's own settings — which project, which board, which threshold, and so on — are stored by Jira itself as part of your dashboard, not by this app.</p>
     </section>
 
@@ -333,7 +335,7 @@
       <p><a href="mailto:info@vudia.site">info@vudia.site</a></p>
     </section>
 
-    <div class="colophon">This policy applies to the Stuck Issues app only. Vudia publishes a separate privacy policy for each of its apps.</div>
+    <div class="colophon">This policy applies to the Time in Status app only. Vudia publishes a separate privacy policy for each of its apps.</div>
   </main>
 </div>
 
