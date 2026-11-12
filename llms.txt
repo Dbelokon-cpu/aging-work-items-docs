@@ -1,0 +1,14 @@
+# Time in Status Gadget for Jira
+
+> A Jira dashboard gadget that lists the work nobody is moving: time in progress, time waiting to start or time since last update, against a threshold you set, plus a time-in-status panel on every issue.
+
+Time in Status Gadget for Jira is a Jira Cloud app by Vudia, built on Atlassian Forge.
+Atlassian Marketplace listing: https://marketplace.atlassian.com/apps/3362333248
+Support: info@vudia.site
+
+## Docs
+
+- [Overview and user guide](https://aging.vudia.site/): A Jira dashboard gadget that lists the work nobody is moving: time in progress, time waiting to start or time since last update, against a threshold you set, plus a time-in-status panel on every issue.
+- [Finding stuck issues in Jira with JQL](https://aging.vudia.site/find-stuck-issues-jql): Five JQL queries that list the work nobody is moving, using nothing but Jira itself, and the point where a query stops being enough.
+- [Privacy policy](https://aging.vudia.site/privacy): What the Time in Status gadget reads from Jira, what it stores and what it never touches.
+- [Security policy](https://aging.vudia.site/security): How the Time in Status gadget is built on Atlassian Forge, what it can access, and how to report a security issue.
